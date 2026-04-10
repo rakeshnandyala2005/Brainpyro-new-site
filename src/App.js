@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { 
-  FaSearch, FaCode, FaPalette, FaShieldAlt, FaLayerGroup, 
-  FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, 
+import {
+  FaSearch, FaCode, FaPalette, FaShieldAlt, FaLayerGroup,
+  FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn,
   FaPhoneAlt, FaRegEnvelope, FaUsers, FaTrophy, FaGraduationCap,
   FaChevronLeft, FaChevronRight, FaWhatsapp, FaMapMarkerAlt, FaChevronDown,
   FaVideo, FaBook, FaLaptopCode, FaChartLine, FaDatabase, FaBrain, FaFire
@@ -15,7 +15,7 @@ const App = () => {
   const [hoveredCourse, setHoveredCourse] = useState(null);
   const [hoveredTestimonial, setHoveredTestimonial] = useState(null);
   const [hoveredTutorial, setHoveredTutorial] = useState(null);
-  
+
   // Scroll animation states
   const [visibleSections, setVisibleSections] = useState({});
   const sectionRefs = useRef({});
@@ -52,57 +52,57 @@ const App = () => {
   ];
 
   const tutorials = [
-    { 
-      id: 1, 
-      title: 'React Hooks Masterclass', 
-      image: 'https://images.pexels.com/photos/163036/men-laptop-working-collaboration-163036.jpeg?auto=compress&cs=tinysrgb&w=400', 
-      category: 'Web Dev', 
-      duration: '2h 45m', 
+    {
+      id: 1,
+      title: 'React Hooks Masterclass',
+      image: 'https://images.pexels.com/photos/163036/men-laptop-working-collaboration-163036.jpeg?auto=compress&cs=tinysrgb&w=400',
+      category: 'Web Dev',
+      duration: '2h 45m',
       icon: <FaLaptopCode />,
       level: 'Intermediate'
     },
-    { 
-      id: 2, 
-      title: 'Advanced CSS Animations', 
-      image: 'https://images.pexels.com/photos/5916322/pexels-photo-5916322.jpeg?auto=compress&cs=tinysrgb&w=400', 
-      category: 'Frontend', 
-      duration: '1h 30m', 
+    {
+      id: 2,
+      title: 'Advanced CSS Animations',
+      image: 'https://images.pexels.com/photos/5916322/pexels-photo-5916322.jpeg?auto=compress&cs=tinysrgb&w=400',
+      category: 'Frontend',
+      duration: '1h 30m',
       icon: <FaPalette />,
       level: 'Advanced'
     },
-    { 
-      id: 3, 
-      title: 'Node.js API Development', 
-      image: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=400', 
-      category: 'Backend', 
-      duration: '3h 20m', 
+    {
+      id: 3,
+      title: 'Node.js API Development',
+      image: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=400',
+      category: 'Backend',
+      duration: '3h 20m',
       icon: <FaCode />,
       level: 'Intermediate'
     },
-    { 
-      id: 4, 
-      title: 'Docker & Kubernetes', 
-      image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=400', 
-      category: 'DevOps', 
-      duration: '4h 10m', 
+    {
+      id: 4,
+      title: 'Docker & Kubernetes',
+      image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=400',
+      category: 'DevOps',
+      duration: '4h 10m',
       icon: <FaDatabase />,
       level: 'Advanced'
     },
-    { 
-      id: 5, 
-      title: 'Python Data Visualization', 
-      image: 'https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=400', 
-      category: 'Data Science', 
-      duration: '2h 15m', 
+    {
+      id: 5,
+      title: 'Python Data Visualization',
+      image: 'https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=400',
+      category: 'Data Science',
+      duration: '2h 15m',
       icon: <FaChartLine />,
       level: 'Beginner'
     },
-    { 
-      id: 6, 
-      title: 'Figma to React Workflow', 
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=400', 
-      category: 'UI/UX', 
-      duration: '1h 50m', 
+    {
+      id: 6,
+      title: 'Figma to React Workflow',
+      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=400',
+      category: 'UI/UX',
+      duration: '1h 50m',
       icon: <FaVideo />,
       level: 'Intermediate'
     },
@@ -172,7 +172,7 @@ const App = () => {
       if (ref) {
         const rect = ref.getBoundingClientRect();
         const isVisible = rect.top < windowHeight * 0.8 && rect.bottom > 0;
-        
+
         setVisibleSections(prev => ({
           ...prev,
           [key]: isVisible
@@ -216,7 +216,7 @@ const App = () => {
           <span style={styles.link}>Home</span>
           <span style={styles.link}>About</span>
           <span style={styles.link}>Courses</span>
-          <div 
+          <div
             style={{ position: 'relative', cursor: 'pointer' }}
             onMouseEnter={() => setIsTutorialOpen(true)}
             onMouseLeave={() => setIsTutorialOpen(false)}
@@ -263,8 +263,8 @@ const App = () => {
             </div>
           </div>
         ))}
-        <button 
-          onClick={prevHeroSlide} 
+        <button
+          onClick={prevHeroSlide}
           style={styles.heroNavBtnLeft}
           onMouseEnter={(e) => {
             e.target.style.transform = 'translateY(-50%) scale(1.1)';
@@ -277,8 +277,8 @@ const App = () => {
         >
           <FaChevronLeft />
         </button>
-        <button 
-          onClick={nextHeroSlide} 
+        <button
+          onClick={nextHeroSlide}
           style={styles.heroNavBtnRight}
           onMouseEnter={(e) => {
             e.target.style.transform = 'translateY(-50%) scale(1.1)';
@@ -322,7 +322,7 @@ const App = () => {
 
       {/* --- Popular Courses (Infinite Loop - 3 cards) --- */}
       <section ref={el => (sectionRefs.current.courses = el)} style={styles.courseSection}>
-        <div style={{ 
+        <div style={{
           ...{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' },
           opacity: visibleSections.courses ? 1 : 0,
           transform: visibleSections.courses ? 'translateY(0)' : 'translateY(30px)',
@@ -330,8 +330,8 @@ const App = () => {
         }}>
           <h2 style={{ fontSize: '32px', fontWeight: '800' }}>🔥 Popular Courses</h2>
           <div style={{ display: 'flex', gap: '10px' }}>
-            <button 
-              onClick={prevCourseSlide} 
+            <button
+              onClick={prevCourseSlide}
               style={styles.courseNavBtn}
               onMouseEnter={(e) => {
                 e.target.style.transform = 'scale(1.1)';
@@ -346,8 +346,8 @@ const App = () => {
             >
               <FaChevronLeft />
             </button>
-            <button 
-              onClick={nextCourseSlide} 
+            <button
+              onClick={nextCourseSlide}
               style={styles.courseNavBtn}
               onMouseEnter={(e) => {
                 e.target.style.transform = 'scale(1.1)';
@@ -364,23 +364,23 @@ const App = () => {
             </button>
           </div>
         </div>
-        
+
         <div style={styles.courseSliderViewport}>
-          <div style={{ 
-            ...styles.courseSliderTrack, 
-            transform: `translateX(-${courseIndex * (100 / 3)}%)` 
+          <div style={{
+            ...styles.courseSliderTrack,
+            transform: `translateX(-${courseIndex * (100 / 3)}%)`
           }}>
             {courses.map((course, index) => (
-              <div 
-                key={course.id} 
+              <div
+                key={course.id}
                 style={{
                   ...styles.courseSlideCard,
                   '--delay': `${index * 0.1}s`,
                   opacity: visibleSections.courses ? 1 : 0,
-                  transform: visibleSections.courses 
+                  transform: visibleSections.courses
                     ? (hoveredCourse === course.id ? 'translateY(0px) scale(1)' : 'translateY(0) scale(0.9)')
                     : 'translateY(50px) scale(0.9)',
-                  transition: hoveredCourse === course.id 
+                  transition: hoveredCourse === course.id
                     ? 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
                     : `all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s`,
                   // boxShadow: hoveredCourse === course.id ? '0 25px 50px rgba(0,0,0,0.2)' : '0 5px 15px rgba(0,0,0,0.05)'
@@ -389,14 +389,14 @@ const App = () => {
                 onMouseLeave={() => setHoveredCourse(null)}
               >
                 <div style={styles.courseImageWrapper}>
-                  <img 
-                    src={course.image} 
-                    alt={course.title} 
+                  <img
+                    src={course.image}
+                    alt={course.title}
                     style={{
                       ...styles.courseImg,
                       transform: hoveredCourse === course.id ? 'scale(1.1)' : 'scale(1)',
                       transition: 'transform 0.6s ease'
-                    }} 
+                    }}
                   />
                   <div style={styles.tag}>{course.icon} <span style={{ marginLeft: '8px' }}>{course.category}</span></div>
                 </div>
@@ -423,7 +423,7 @@ const App = () => {
 
       {/* Rest of the sections remain the same as before... (keeping it concise) */}
       <section ref={el => (sectionRefs.current.tutorials = el)} style={styles.tutorialSection}>
-        <div style={{ 
+        <div style={{
           ...{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' },
           opacity: visibleSections.tutorials ? 1 : 0,
           transform: visibleSections.tutorials ? 'translateY(0)' : 'translateY(30px)',
@@ -431,8 +431,8 @@ const App = () => {
         }}>
           <h2 style={{ fontSize: '32px', fontWeight: '800' }}>🎥 Free Tutorials</h2>
           <div style={{ display: 'flex', gap: '10px' }}>
-            <button 
-              onClick={prevTutorialSlide} 
+            <button
+              onClick={prevTutorialSlide}
               style={styles.tutorialNavBtn}
               onMouseEnter={(e) => {
                 e.target.style.transform = 'scale(1.1)';
@@ -445,8 +445,8 @@ const App = () => {
             >
               <FaChevronLeft />
             </button>
-            <button 
-              onClick={nextTutorialSlide} 
+            <button
+              onClick={nextTutorialSlide}
               style={styles.tutorialNavBtn}
               onMouseEnter={(e) => {
                 e.target.style.transform = 'scale(1.1)';
@@ -461,33 +461,25 @@ const App = () => {
             </button>
           </div>
         </div>
-        
+
         <div style={styles.tutorialSliderViewport}>
-          <div style={{ 
-            ...styles.tutorialSliderTrack, 
-            transform: `translateX(-${tutorialIndex * (100 / 4)}%)` 
+          <div style={{
+            ...styles.tutorialSliderTrack,
+            transform: `translateX(-${tutorialIndex * (100 / 4)}%)`
           }}>
             {tutorials.map((tutorial, index) => (
-              <div 
+              <div
                 key={tutorial.id}
                 style={{
                   ...styles.tutorialSlideCard,
                   '--delay': `${index * 0.08}s`,
-                  opacity: visibleSections.tutorials ? 1 : 0,
-                  transform: visibleSections.tutorials 
-                    ? (hoveredTutorial === tutorial.id ? 'translateY(-8px) scale(1.02)' : 'translateY(0)')
-                    : 'translateY(40px) scale(0.95)',
-                  transition: hoveredTutorial === tutorial.id 
-                    ? 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-                    : `all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.08}s`,
-                  // boxShadow: hoveredTutorial === tutorial.id ? '0 20px 40px rgba(155, 51, 51, 0.15)' : '0 10px 25px rgba(0,0,0,0.08)'
                 }}
                 onMouseEnter={() => setHoveredTutorial(tutorial.id)}
                 onMouseLeave={() => setHoveredTutorial(null)}
               >
                 <div style={styles.tutorialImageWrapper}>
-                  <img 
-                    src={tutorial.image} 
+                  <img
+                    src={tutorial.image}
                     alt={tutorial.title}
                     style={{
                       ...styles.tutorialImg,
@@ -498,7 +490,7 @@ const App = () => {
                   <div style={styles.playButton}>▶</div>
                   <div style={styles.tutorialTag}>{tutorial.icon} <span style={{ marginLeft: '6px' }}>{tutorial.category}</span></div>
                 </div>
-                <div style={styles.tutorialCardContent}>
+                <div>
                   <div style={styles.tutorialHeader}>
                     <h4 style={{
                       ...styles.tutorialTitle,
@@ -532,16 +524,16 @@ const App = () => {
         }}>What Our Students Say</h2>
         <div style={styles.courseGrid}>
           {testimonials.map((t, i) => (
-            <div 
+            <div
               key={i}
               style={{
                 ...styles.testimonialCard,
                 '--delay': `${i * 0.15}s`,
                 opacity: visibleSections.testimonials ? 1 : 0,
-                transform: visibleSections.testimonials 
+                transform: visibleSections.testimonials
                   ? (hoveredTestimonial === i ? 'translateY(-10px) scale(1.02)' : 'translateY(0)')
                   : 'translateY(50px) scale(0.9)',
-                transition: hoveredTestimonial === i 
+                transition: hoveredTestimonial === i
                   ? 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
                   : `all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${i * 0.15}s`,
                 boxShadow: hoveredTestimonial === i ? '0 20px 40px rgba(0,0,0,0.15)' : '0 10px 30px rgba(0,0,0,0.05)'
@@ -550,7 +542,7 @@ const App = () => {
               onMouseLeave={() => setHoveredTestimonial(null)}
             >
               <p style={styles.testimonialText}>"{t.text}"</p>
-              <h4 style={{ 
+              <h4 style={{
                 marginBottom: '5px',
                 transform: hoveredTestimonial === i ? 'translateX(10px)' : 'translateX(0)',
                 transition: 'all 0.3s ease',
@@ -558,9 +550,9 @@ const App = () => {
               }}>
                 — {t.name}
               </h4>
-              <span style={{ 
-                color: '#f97316', 
-                fontSize: '14px', 
+              <span style={{
+                color: '#f97316',
+                fontSize: '14px',
                 fontWeight: 'bold',
                 transform: hoveredTestimonial === i ? 'scale(1.1)' : 'scale(1)',
                 transition: 'all 0.3s ease'
@@ -611,13 +603,13 @@ const App = () => {
           transform: visibleSections.cta ? 'translateY(0)' : 'translateY(30px)',
           transition: 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
         }}>Start Your Journey Today!</h2>
-        <p style={{ 
-          marginBottom: '30px', 
+        <p style={{
+          marginBottom: '30px',
           opacity: visibleSections.cta ? 0.9 : 0,
           transform: visibleSections.cta ? 'translateY(0)' : 'translateY(20px)',
           transition: 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s'
         }}>Join thousands of students mastering in-demand skills.</p>
-        <button 
+        <button
           style={{
             ...styles.ctaBtn,
             opacity: visibleSections.cta ? 1 : 0,
@@ -1057,7 +1049,12 @@ const styles = {
     flex: '0 0 25%',
     padding: '0 12px',
     boxSizing: 'border-box',
-    marginBottom: '20px'
+    marginBottom: '20px',
+    backgroundColor: '#ffffff',
+    padding: '15px',
+    margin: '0 10px',
+    height: 'fit-content',
+    borderRadius: '12px',
   },
 
   tutorialImageWrapper: {
