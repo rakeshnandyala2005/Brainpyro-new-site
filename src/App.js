@@ -473,6 +473,14 @@ const App = () => {
                 style={{
                   ...styles.tutorialSlideCard,
                   '--delay': `${index * 0.08}s`,
+                  opacity: visibleSections.tutorials ? 1 : 0,
+                  transform: visibleSections.tutorials
+                    ? ('translateY(0)')
+                    : 'translateY(40px) scale(0.95)',
+                  transition: hoveredTutorial === tutorial.id
+                    ? 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                    : `all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.08}s`,
+
                 }}
                 onMouseEnter={() => setHoveredTutorial(tutorial.id)}
                 onMouseLeave={() => setHoveredTutorial(null)}
