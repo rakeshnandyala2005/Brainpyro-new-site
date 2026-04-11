@@ -1,4 +1,11 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import About from './Pages/About';
+import Courses from './Pages/Courses';
+import Tutorials from './Pages/Tutorials';
+import Login from './Pages/Login';
+import SignUp from './Pages/SignUp';
+import Navbar from './Components/Navbar';
 import {
   FaSearch, FaCode, FaPalette, FaShieldAlt, FaLayerGroup,
   FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn,
@@ -6,8 +13,9 @@ import {
   FaChevronLeft, FaChevronRight, FaWhatsapp, FaMapMarkerAlt, FaChevronDown,
   FaVideo, FaBook, FaLaptopCode, FaChartLine, FaDatabase, FaBrain, FaFire
 } from 'react-icons/fa';
+import Footer from './Components/Footer';
 
-const App = () => {
+const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [courseIndex, setCourseIndex] = useState(0);
   const [tutorialIndex, setTutorialIndex] = useState(0);
@@ -115,14 +123,7 @@ const App = () => {
   ];
 
   // --- Logo Pulse Animation ---
-  useEffect(() => {
-    const pulseInterval = setInterval(() => {
-      setLogoPulse(true);
-      setTimeout(() => setLogoPulse(false), 500);
-    }, 4000);
-    return () => clearInterval(pulseInterval);
-  }, []);
-
+  
   // --- Carousel Logics ---
   const nextHeroSlide = () => setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   const prevHeroSlide = () => setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
@@ -200,39 +201,7 @@ const App = () => {
 
   return (
     <div style={styles.container}>
-      {/* --- Navigation with Enhanced Logo --- */}
-      <nav style={styles.navbar}>
-        <div style={{
-          ...styles.logoContainer,
-          animation: logoPulse ? 'logoPulse 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)' : 'none'
-        }}>
-          <div style={styles.logoIcon}>
-            <FaBrain style={styles.brainIcon} />
-            <FaFire style={styles.fireIcon} />
-          </div>
-          <span style={styles.logoText}>BRAINPYRO</span>
-        </div>
-        <div style={styles.navLinks}>
-          <span style={styles.link}>Home</span>
-          <span style={styles.link}>About</span>
-          <span style={styles.link}>Courses</span>
-          <div
-            style={{ position: 'relative', cursor: 'pointer' }}
-            onMouseEnter={() => setIsTutorialOpen(true)}
-            onMouseLeave={() => setIsTutorialOpen(false)}
-          >
-            <span style={styles.link}>Tutorials <FaChevronDown size={10} /></span>
-            {isTutorialOpen && (
-              <div style={styles.dropdown}>
-                <div style={styles.dropdownItem}>Web Development</div>
-                <div style={styles.dropdownItem}>Data Science</div>
-                <div style={styles.dropdownItem}>Graphic Design</div>
-              </div>
-            )}
-          </div>
-        </div>
-        <button style={styles.loginBtn}>Login / Sign Up</button>
-      </nav>
+      
 
       {/* --- Hero Carousel --- */}
       <header style={styles.heroWrapper}>
@@ -637,38 +606,7 @@ const App = () => {
         </button>
       </section>
 
-      <footer ref={el => (sectionRefs.current.footer = el)} style={styles.footer}>
-        <div style={{
-          ...styles.footerContent,
-          opacity: visibleSections.footer ? 1 : 0,
-          transform: visibleSections.footer ? 'translateY(0)' : 'translateY(30px)',
-          transition: 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-        }}>
-          <div style={styles.footerBrand}>
-            <div style={styles.footerLogo}>
-              <FaBrain style={styles.footerBrainIcon} />
-              <FaFire style={styles.footerFireIcon} />
-              <span>BRAINPYRO</span>
-            </div>
-            <p style={{ color: '#94a3b8', lineHeight: '1.6' }}>Building your future through quality education.</p>
-          </div>
-          <div style={styles.footerLinks}>
-            <h4 style={styles.footerHead}>Contact</h4>
-            <p style={styles.footerText}><FaPhoneAlt size={14} style={styles.inlineIcon} /> +91 12345 67890</p>
-            <p style={styles.footerText}><FaWhatsapp size={14} style={styles.inlineIcon} /> Chat on WhatsApp</p>
-          </div>
-          <div style={styles.footerLinks}>
-            <h4 style={styles.footerHead}>Location</h4>
-            <p style={styles.footerText}><FaMapMarkerAlt size={14} style={styles.inlineIcon} /> Bangalore, India</p>
-            <div style={styles.socialGrid}>
-              {[FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn].map((Icon, i) => (
-                <div key={i} style={styles.socialCircle}><Icon /></div>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div style={styles.copyright}>© 2026 BrainPyro. All Rights Reserved.</div>
-      </footer>
+      <Footer />
     </div>
   );
 };
@@ -1389,6 +1327,35 @@ const styles = {
     color: '#fb923c',
     animation: 'fireFlicker 2.5s infinite'
   }
+};
+
+const App = () => {
+  const [isTutorialOpen, setIsTutorialOpen] = useState(false);
+  const [logoPulse, setLogoPulse] = useState(false);
+
+  useEffect(() => {
+    const pulseInterval = setInterval(() => {
+      setLogoPulse(true);
+      setTimeout(() => setLogoPulse(false), 500);
+    }, 4000);
+    return () => clearInterval(pulseInterval);
+  }, []);
+
+  return (
+    <div>
+      <header>
+        <Navbar/>
+              </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/tutorials" element={<Tutorials />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
+    </div>
+  );
 };
 
 const globalStyles = `
